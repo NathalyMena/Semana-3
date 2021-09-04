@@ -12,14 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.os.Bundle;
-
 public class MainActivity extends AppCompatActivity {
 
-    private ConstraintLayout bg;
+    private ConstraintLayout background;
     private EditText nameInput;
     private Button configBtn, okBtn;
-    private TextView textTv;
+    private TextView textName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +27,10 @@ public class MainActivity extends AppCompatActivity {
         configBtn = findViewById(R.id.configBtn);
         okBtn = findViewById(R.id.okBtn);
         nameInput = findViewById(R.id.nameInput);
-        bg = findViewById(R.id.background);
-        textTv = findViewById(R.id.textTv);
+        background = findViewById(R.id.background);
+        textName = findViewById(R.id.textName);
 
         SharedPreferences preferences = getSharedPreferences("name", MODE_PRIVATE);
-
-        configBtn.setOnClickListener(
-
-                (v) -> {
-                    Intent i = new Intent(this, color.class);
-                    startActivity(i);
-                }
-        );
 
         okBtn.setOnClickListener(
 
@@ -57,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        configBtn.setOnClickListener(
+
+                (v) -> {
+                    Intent i = new Intent(this, color.class);
+                    startActivity(i);
+                }
+        );
+
     }
 
     protected void onResume() {
@@ -65,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
         String bgColor = preferences.getString("bgColor", "#FFFFFF");
         String typeColor = preferences.getString("typeColor", "#FFFFFF");
-        bg.setBackgroundColor(Color.parseColor(bgColor));
+        background.setBackgroundColor(Color.parseColor(bgColor));
         nameInput.setTextColor(Color.parseColor(typeColor));
-        textTv.setTextColor(Color.parseColor(typeColor));
+        textName.setTextColor(Color.parseColor(typeColor));
     }
 
 }

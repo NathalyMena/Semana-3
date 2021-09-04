@@ -10,14 +10,13 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class calcularNota extends AppCompatActivity{
 
     private ConstraintLayout bg;
-    private EditText proyectoUnoInput, proyectoDosInput, quicesInput, parcialUnoInput, parcialDosInput;
+    private EditText proyecto1, proyecto2, quices, parcial1, parcial2;
     private Button calculateBtn;
-    private TextView textTv, tittleTv;
+    private TextView textName, tittleGrade;
     private Double averageRounded;
 
     @Override
@@ -25,15 +24,15 @@ public class calcularNota extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calcular_nota);
 
-        proyectoUnoInput = findViewById(R.id.proyectoUnoInput);
-        proyectoDosInput = findViewById(R.id.proyectoDosInput);
-        quicesInput = findViewById(R.id.quicesInput);
-        parcialUnoInput = findViewById(R.id.parcialUnoInput);
-        parcialDosInput = findViewById(R.id.parcialDosInput);
+        proyecto1 = findViewById(R.id.proyecto1);
+        proyecto2 = findViewById(R.id.proyecto2);
+        quices = findViewById(R.id.quices);
+        parcial1 = findViewById(R.id.parcial1);
+        parcial2 = findViewById(R.id.parcial2);
         calculateBtn = findViewById(R.id.calculateBtn);
         bg = findViewById(R.id.background);
-        textTv = findViewById(R.id.textTv);
-        tittleTv = findViewById(R.id.tittleTv);
+        textName = findViewById(R.id.textName);
+        tittleGrade = findViewById(R.id.tittleGrade);
         calculateBtn = findViewById(R.id.calculateBtn);
 
         calculateBtn.setOnClickListener(
@@ -52,6 +51,19 @@ public class calcularNota extends AppCompatActivity{
         );
     }
 
+    public void calculateGrade() {
+
+        double grade1 = Double.parseDouble(proyecto1.getText().toString());
+        double grade2 = Double.parseDouble(proyecto2.getText().toString());
+        double grade3 = Double.parseDouble(quices.getText().toString());
+        double grade4 = Double.parseDouble(parcial1.getText().toString());
+        double grade5 = Double.parseDouble(parcial2.getText().toString());
+
+        double average = ((grade1 * 0.25) + (grade2 * 0.25) + (grade3 * 0.20) + (grade4 * 0.15) + (grade5 * 0.15));
+        averageRounded = Math.round(average * 100.0) / 100.0;
+
+    }
+
     protected void onResume() {
         super.onResume();
         SharedPreferences preferences = getSharedPreferences("colors", MODE_PRIVATE);
@@ -59,27 +71,16 @@ public class calcularNota extends AppCompatActivity{
         String bgColor = preferences.getString("bgColor", "#FFFFFF");
         String typeColor = preferences.getString("typeColor", "#FFFFFF");
         bg.setBackgroundColor(Color.parseColor(bgColor));
-        tittleTv.setTextColor(Color.parseColor(typeColor));
-        textTv.setTextColor(Color.parseColor(typeColor));
-        proyectoUnoInput.setTextColor(Color.parseColor(typeColor));
-        proyectoDosInput.setTextColor(Color.parseColor(typeColor));
-        quicesInput.setTextColor(Color.parseColor(typeColor));
-        parcialUnoInput.setTextColor(Color.parseColor(typeColor));
-        parcialDosInput.setTextColor(Color.parseColor(typeColor));
+        tittleGrade.setTextColor(Color.parseColor(typeColor));
+        textName.setTextColor(Color.parseColor(typeColor));
+        proyecto1.setTextColor(Color.parseColor(typeColor));
+        proyecto2.setTextColor(Color.parseColor(typeColor));
+        quices.setTextColor(Color.parseColor(typeColor));
+        parcial1.setTextColor(Color.parseColor(typeColor));
+        parcial2.setTextColor(Color.parseColor(typeColor));
 
     }
 
-    public void calculateGrade() {
 
-        double grade1 = Double.parseDouble(proyectoUnoInput.getText().toString());
-        double grade2 = Double.parseDouble(proyectoDosInput.getText().toString());
-        double grade3 = Double.parseDouble(quicesInput.getText().toString());
-        double grade4 = Double.parseDouble(parcialUnoInput.getText().toString());
-        double grade5 = Double.parseDouble(parcialDosInput.getText().toString());
-
-        double average = ((grade1 * 0.25) + (grade2 * 0.25) + (grade3 * 0.20) + (grade4 * 0.15) + (grade5 * 0.15));
-        averageRounded = Math.round(average * 100.0) / 100.0;
-
-    }
 }
 

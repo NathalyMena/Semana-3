@@ -8,12 +8,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class notaFinal extends AppCompatActivity{
 
     private ConstraintLayout bg;
-    private TextView textTv, tittleTv, gradeTv;
+    private TextView textTv, tittleGrade, gradeTv;
     private Button retryBtn;
 
     @Override
@@ -21,8 +20,8 @@ public class notaFinal extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.resultado_nota);
 
-        textTv = findViewById(R.id.textTv);
-        tittleTv = findViewById(R.id.tittleTv);
+        textTv = findViewById(R.id.textName);
+        tittleGrade = findViewById(R.id.tittleGrade);
         gradeTv = findViewById(R.id.finalGradeTv);
         retryBtn = findViewById(R.id.retryBtn);
         bg = findViewById(R.id.background);
@@ -53,7 +52,7 @@ public class notaFinal extends AppCompatActivity{
         String bgColor = preferences.getString("bgColor", "#FFFFFF");
         String typeColor = preferences.getString("typeColor", "#FFFFFF");
         bg.setBackgroundColor(Color.parseColor(bgColor));
-        tittleTv.setTextColor(Color.parseColor(typeColor));
+        tittleGrade.setTextColor(Color.parseColor(typeColor));
         textTv.setTextColor(Color.parseColor(typeColor));
         gradeTv.setTextColor(Color.parseColor(typeColor));
 

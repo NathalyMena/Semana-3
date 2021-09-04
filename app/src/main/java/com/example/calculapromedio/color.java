@@ -11,34 +11,23 @@ import android.widget.TextView;
 
 public class color extends AppCompatActivity {
 
-    private ConstraintLayout bg;
+    private ConstraintLayout background;
     public Button blueBtn, blackBtn, whiteBtn;
-    public TextView tittleTv, textTv;
+    public TextView tittleGrade, textName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configurar_color);
 
-        bg = findViewById(R.id.background);
+        background = findViewById(R.id.background);
         blueBtn = findViewById(R.id.blueBtn);
         blackBtn = findViewById(R.id.blackBtn);
         whiteBtn = findViewById(R.id.whiteBtn);
-        tittleTv = findViewById(R.id.tittleTv);
-        textTv = findViewById(R.id.textTv);
+        tittleGrade = findViewById(R.id.tittleGrade);
+        textName = findViewById(R.id.textName);
 
         SharedPreferences preferences = getSharedPreferences("colors", MODE_PRIVATE);
-
-        blueBtn.setOnClickListener(
-
-                (v) -> {
-
-                    String blue = "#3F51B5";
-                    preferences.edit().putString("bgColor", blue).apply();
-                    preferences.edit().putString("typeColor", "#FFFFFF").apply();
-                    finish();
-                }
-        );
 
         blackBtn.setOnClickListener(
 
@@ -61,6 +50,20 @@ public class color extends AppCompatActivity {
                     finish();
                 }
         );
+
+        blueBtn.setOnClickListener(
+
+                (v) -> {
+
+                    String blue = "#3F51B5";
+                    preferences.edit().putString("bgColor", blue).apply();
+                    preferences.edit().putString("typeColor", "#FFFFFF").apply();
+                    finish();
+                }
+        );
+
+
+
     }
 
     protected void onResume() {
@@ -69,9 +72,9 @@ public class color extends AppCompatActivity {
 
         String bgColor = preferences.getString("bgColor", "#FFFFFF");
         String typeColor = preferences.getString("typeColor", "#FFFFFF");
-        bg.setBackgroundColor(Color.parseColor(bgColor));
-        tittleTv.setTextColor(Color.parseColor(typeColor));
-        textTv.setTextColor(Color.parseColor(typeColor));
+        background.setBackgroundColor(Color.parseColor(bgColor));
+        tittleGrade.setTextColor(Color.parseColor(typeColor));
+        textName.setTextColor(Color.parseColor(typeColor));
     }
 }
 

@@ -8,14 +8,14 @@
     tools:context=".color">
 
     <TextView
-        android:id="@+id/textTv"
+        android:id="@+id/textName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Seleccione un color de fondo para la aplicación"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tittleTv" />
+        app:layout_constraintTop_toBottomOf="@+id/tittleGrade" />
 
     <Button
         android:id="@+id/blueBtn"
@@ -26,7 +26,7 @@
         android:text="Azul"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTv" />
+        app:layout_constraintTop_toBottomOf="@+id/textName" />
 
     <Button
         android:id="@+id/whiteBtn"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/whiteBtn" />
 
     <TextView
-        android:id="@+id/tittleTv"
+        android:id="@+id/tittleGrade"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="112dp"
